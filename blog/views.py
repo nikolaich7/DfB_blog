@@ -2,14 +2,26 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from gtts import gTTS
+from playsound import playsound
+
+
+def sound_text():
+	s = gTTS("Sample Text")
+	s.save('sample.mp3')
+	playsound('sample.mp3')
 
 
 class BlogListView(ListView):
+	print(1)
+	sound_text()
 	model = Post
 	template_name = 'home.html'
 
 
 class BlogDetailView(DetailView):
+	print(1)
+	sound_text()
 	model = Post
 	template_name = 'post_detail.html'
 
